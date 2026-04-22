@@ -27,7 +27,6 @@
     color: var(--ink);
   }
 
-  /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(15,17,23,0.95);
@@ -146,6 +145,8 @@
   .btn-secondary:hover { background: rgba(255,255,255,0.13); }
 
   .btn svg { width: 15px; height: 15px; }
+  .btn-sm { padding: 7px 16px; font-size: 13px; background: var(--accent); color: white; border-radius: 8px; }
+  .btn-sm:hover { background: #1447c0; transform: translateY(-1px); }
 
   /* SECTIONS */
   .container { max-width: 960px; margin: 0 auto; padding: 80px 40px; }
@@ -230,9 +231,7 @@
   .proj-link:hover { opacity: 0.75; }
   .proj-link svg { width: 13px; height: 13px; }
 
-  /* PLACEHOLDER CARD STATE */
-  .project-card.placeholder { opacity: 0.65; cursor: default; }
-  .project-card.placeholder:hover { transform: none; box-shadow: none; }
+
 
   .coming-soon {
     display: inline-flex; align-items: center; gap: 5px;
@@ -348,7 +347,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-avatar">
     <img src="avatar.jpg" alt="Farkas Kristóf Péter" onerror="this.style.display='none'">
@@ -371,72 +369,152 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <div class="section-header"><h2>Projektek</h2></div>
     <div class="projects-grid">
 
-      <!-- Placeholder 1 -->
-      <div class="project-card placeholder">
+      <div class="project-card">
         <div class="project-header">
-          <div class="project-icon" style="background:#eef2ff;">🌐</div>
+          <div class="project-icon" style="background:#eef2ff;">🤖</div>
           <div>
-            <div class="project-title">Projekt neve</div>
+            <div class="project-title">AIDA</div>
+            <div class="project-type">AI Desktop Asszisztens</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Saját fejlesztésű AI asztali asszisztens, amely természetes nyelven kommunikál és automatizálja a mindennapi digitális feladatokat – fájlkezelés, Google Calendar integráció, emlékeztetők és egyéb segédeszközök.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">Google API</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/FKristof29/AIDA" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#1a1a2e; color: goldenrod;">⚔️</div>
+          <div>
+            <div class="project-title">mm</div>
+            <div class="project-type">Böngészős RPG játék</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Körökre osztott böngészős RPG játék, amelyben a játékos egy fantasy világban kalandozhat, csatázhat ellenfelekkel és fejlesztheti karakterét. Teljes harci rendszer, térkép és menürendszer.</div>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML Canvas</span>
+            <span class="tag">jQuery</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/FKristof29" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#fef2f2;">🅰️</div>
+          <div>
+            <div class="project-title">Angular Beadandó</div>
             <div class="project-type">Webalkalmazás</div>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-desc">A projekt leírása hamarosan elérhető lesz.</div>
+          <div class="project-desc">Egyetemi projektmunka Angular keretrendszerben. Komponens alapú felépítés, routing, service-ek és REST API kommunikáció.</div>
           <div class="project-tags">
-            <span class="tag">React</span>
+            <span class="tag">Angular</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/webfejlesztesi-keretrendszerek-2026/projektmunka-FKristof29" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#f0fdf4;">🌐</div>
+          <div>
+            <div class="project-title">MYHTML</div>
+            <div class="project-type">Webfejlesztési beadandó</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Statikus weboldal beadandó projekt, amelyben HTML és CSS segítségével valósítottam meg egy többoldalas, reszponzív weboldalt.</div>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
             <span class="tag">CSS</span>
           </div>
         </div>
         <div class="project-footer">
-          <span class="coming-soon">⏳ Hamarosan</span>
+          <a href="https://github.com/FKristof29/MYHTML" target="_blank" class="btn btn-sm">GitHub →</a>
         </div>
       </div>
 
-      <!-- Placeholder 2 -->
-      <div class="project-card placeholder">
+      <div class="project-card">
         <div class="project-header">
-          <div class="project-icon" style="background:#fef2f2;">🖥️</div>
+          <div class="project-icon" style="background:#fffbeb;">🤝</div>
           <div>
-            <div class="project-title">Projekt neve</div>
-            <div class="project-type">Asztali alkalmazás</div>
+            <div class="project-title">AISlop</div>
+            <div class="project-type">AI projekt – közreműködtem</div>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-desc">A projekt leírása hamarosan elérhető lesz.</div>
-          <div class="project-tags">
-            <span class="tag">Java</span>
-            <span class="tag">C#</span>
-          </div>
-        </div>
-        <div class="project-footer">
-          <span class="coming-soon">⏳ Hamarosan</span>
-        </div>
-      </div>
-
-      <!-- Placeholder 3 -->
-      <div class="project-card placeholder">
-        <div class="project-header">
-          <div class="project-icon" style="background:#f0fdf4;">📱</div>
-          <div>
-            <div class="project-title">Projekt neve</div>
-            <div class="project-type">Egyéb projekt</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-desc">A projekt leírása hamarosan elérhető lesz.</div>
+          <div class="project-desc">AI alapú projekt amelynek fejlesztésében közreműködtem. Gépi tanulási megoldások és AI eszközök integrációja.</div>
           <div class="project-tags">
             <span class="tag">Python</span>
-            <span class="tag">Angular</span>
+            <span class="tag">AI</span>
           </div>
         </div>
         <div class="project-footer">
-          <span class="coming-soon">⏳ Hamarosan</span>
+          <a href="https://github.com/cride9/AISlop" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#f5f3ff;">🎲</div>
+          <div>
+            <div class="project-title">dnd-ai</div>
+            <div class="project-type">AI projekt – közreműködtem</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">D&D témájú AI projekt amelynek fejlesztésében közreműködtem. Mesterséges intelligencia alkalmazása szerepjáték mechanikákhoz.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">AI</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/cride9/dnd-ai" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#f0fdf4;">🧠</div>
+          <div>
+            <div class="project-title">Basic-Agent</div>
+            <div class="project-type">AI projekt – közreműködtem</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Alap AI agent implementáció amelynek fejlesztésében közreműködtem. Autonóm döntéshozatal és feladatvégrehajtás gépi tanulással.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">AI</span>
+            <span class="tag">Agent</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/cride9/Basic-Agent" target="_blank" class="btn btn-sm">GitHub →</a>
         </div>
       </div>
 
@@ -444,64 +522,7 @@
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" style="background: #fff;">
-  <div class="container">
-    <div class="section-header"><h2>Technológiák</h2></div>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-icon">🌐</div><div><div class="skill-name">HTML / CSS</div><div class="skill-level">Frontend alapok</div></div></div>
-      <div class="skill-card"><div class="skill-icon">⚡</div><div><div class="skill-name">JavaScript</div><div class="skill-level">Frontend & logika</div></div></div>
-      <div class="skill-card"><div class="skill-icon">⚛️</div><div><div class="skill-name">React</div><div class="skill-level">UI framework</div></div></div>
-      <div class="skill-card"><div class="skill-icon">🅰️</div><div><div class="skill-name">Angular</div><div class="skill-level">UI framework</div></div></div>
-      <div class="skill-card"><div class="skill-icon">🐘</div><div><div class="skill-name">PHP</div><div class="skill-level">Backend fejlesztés</div></div></div>
-      <div class="skill-card"><div class="skill-icon">☕</div><div><div class="skill-name">Java</div><div class="skill-level">OOP & alkalmazások</div></div></div>
-      <div class="skill-card"><div class="skill-icon">🐍</div><div><div class="skill-name">Python</div><div class="skill-level">Scripting & adatok</div></div></div>
-      <div class="skill-card"><div class="skill-icon">🔷</div><div><div class="skill-name">C#</div><div class="skill-level">.NET fejlesztés</div></div></div>
-    </div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-header"><h2>Rólam</h2></div>
-    <div class="about-grid">
-      <div>
-        <p class="about-text">
-          Szoftverfejlesztő és webfejlesztő vagyok, jelenleg a <strong>Szegedi Tudományegyetemen</strong> tanulok programtervező informatika szakon. A <strong>Logiscoolban programozást oktatok</strong>, ahol fiatalokkal osztom meg a kódolás szeretetét.<br><br>
-          Szívesen dolgozom mind frontend, mind backend területen. Megbízható, szorgalmas és csapatmunkára kész fejlesztő vagyok, aki folyamatosan fejleszti magát.
-        </p>
-      </div>
-      <div class="about-facts">
-        <div class="fact-item"><span class="fact-icon">🎓</span><div><div class="fact-label">Képzés</div><div class="fact-value">Szegedi Tudományegyetem</div></div></div>
-        <div class="fact-item"><span class="fact-icon">💼</span><div><div class="fact-label">Jelenlegi munkahely</div><div class="fact-value">Logiscool – Oktató</div></div></div>
-        <div class="fact-item"><span class="fact-icon">📍</span><div><div class="fact-label">Helyszín</div><div class="fact-value">Szeged, Magyarország</div></div></div>
-        <div class="fact-item"><span class="fact-icon">🚗</span><div><div class="fact-label">Jogosítvány</div><div class="fact-value">B kategória</div></div></div>
-        <div class="fact-item"><span class="fact-icon">🌍</span><div><div class="fact-label">Nyelvek</div><div class="fact-value">Magyar · Angol B2 · Német B2</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <h2>Lépj <em>kapcsolatba</em></h2>
-  <p>Legyen szó projektötletről, munkalehetőségről vagy csak egy kérdésről — szívesen hallok rólad.</p>
-  <div class="contact-links">
-    <a class="contact-link" href="mailto:kristof.peter.farkas@gmail.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Email
-    </a>
-    <a class="contact-link" href="https://github.com/FKristof29" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-      GitHub
-    </a>
-    <a class="contact-link" href="tel:+36307865469">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 13a19.79 19.79 0 01-3.07-8.67A2 2 0 012.88 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Telefon
-    </a>
-  </div>
-</section>
 
 <footer>
   © 2025 Farkas Kristóf Péter · Szoftverfejlesztő & Webfejlesztő
