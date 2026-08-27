@@ -180,7 +180,7 @@
     border-radius: 5px; padding: 3px 9px;
   }
 
-  .project-footer { padding: 0 24px 20px; display: flex; gap: 10px; }
+  .project-footer { padding: 0 24px 20px; display: flex; gap: 10px; flex-wrap: wrap; }
 
   .contrib-grid {
     display: grid;
@@ -206,6 +206,32 @@
   }
   .contrib-link:hover { opacity: 0.7; }
 
+  .exp-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 30px;
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+
+  .exp-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(26,86,219,0.08); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+
+  .exp-role { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .exp-meta { font-size: 12.5px; color: var(--accent); font-weight: 600; margin-top: 3px; }
+  .exp-org { font-size: 13px; color: var(--muted); margin-top: 1px; margin-bottom: 12px; }
+
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .exp-list li {
+    font-size: 13.5px; color: var(--muted); line-height: 1.55;
+    padding-left: 16px; position: relative;
+  }
+  .exp-list li::before {
+    content: '—'; position: absolute; left: 0; color: var(--accent);
+  }
+
   footer {
     background: #080a0e; text-align: center; padding: 24px;
     font-size: 12.5px; color: rgba(255,255,255,0.25);
@@ -216,6 +242,7 @@
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
     .container { padding: 60px 20px; }
+    .exp-card { flex-direction: column; }
   }
 </style>
 </head>
@@ -225,6 +252,7 @@
   <a class="nav-logo" href="#">Farkas <em>Kristóf </em> P.</a>
   <div class="nav-links">
     <a href="#projects">Projektek</a>
+    <a href="#experience">Tapasztalat</a>
     <a href="#contrib">Közreműködések</a>
   </div>
 </nav>
@@ -284,14 +312,16 @@
           </div>
         </div>
         <div class="project-body">
-          <div class="project-desc">Multimédia beadandó projekt jQuery segítségével. Körökre osztott böngészős RPG játék teljes harci rendszerrel, térképpel és menürendszerrel.(A projekt forráskódja jelenleg privát az egyetemi szabályzat és a plágiumkereső rendszerek miatt. A sikeres leadást/védést követően a kód nyilvánossá válik.)</div>
+          <div class="project-desc">Multimédia beadandó projekt jQuery segítségével. Körökre osztott böngészős RPG játék teljes harci rendszerrel, térképpel és menürendszerrel.</div>
           <div class="project-tags">
             <span class="tag">JavaScript</span>
             <span class="tag">HTML Canvas</span>
             <span class="tag">jQuery</span>
           </div>
         </div>
-        
+        <div class="project-footer">
+          <a href="https://github.com/FKristof29/mm_beadando" target="_blank" class="btn btn-sm">GitHub →</a>
+        </div>
       </div>
 
       <div class="project-card">
@@ -418,6 +448,69 @@
         </div>
       </div>
 
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#fff7ed;">🤟</div>
+          <div>
+            <div class="project-title">Kézjel-felismerő</div>
+            <div class="project-type">MediaPipe + AI modell</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Magyar kézjel (ujjábécé / dactyl) felismerő algoritmus fejlesztése MediaPipe kéz-nyomkövetéssel és gépi tanulási modellel, a szakmai gyakorlat során gyűjtött és elemzett adatok alapján. A meglévő kézdactyl rendszer újraírása és továbbfejlesztése.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">MediaPipe</span>
+            <span class="tag">AI</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://jelsmart.hu/demo/" target="_blank" class="btn btn-sm">Demo →</a>
+          <a href="https://jelsmart.hu/dactyl" target="_blank" class="btn btn-sm">Dactyl →</a>
+          <a href="https://muhely.ovikodex.hu/panel" target="_blank" class="btn btn-sm">Panel →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon" style="background:#ecfeff;">💬</div>
+          <div>
+            <div class="project-title">Chatbot & Quiz Generátor</div>
+            <div class="project-type">AI webalkalmazás</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-desc">Chatbot, valamint kvíz generátor és -lejátszó fejlesztése a DigiKódex platformhoz, helyi (Ollama) és felhő alapú (OpenAI API) nyelvi modellek integrálásával.</div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">OpenAI API</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://digikodex.hu/quiz-generator" target="_blank" class="btn btn-sm">Megnyitás →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background: white;">
+  <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="section-header"><h2 style="font-size: 22px;">Tapasztalat</h2></div>
+    <div class="exp-card">
+      <div class="exp-icon">💼</div>
+      <div>
+        <div class="exp-role">Szakmai Gyakornok</div>
+        <div class="exp-meta">2026. jún. – szept.</div>
+        <div class="exp-org">Informatika Határok Nélkül Egyesület</div>
+        <ul class="exp-list">
+          <li>AI integráció megvalósítása különböző projektekben.</li>
+          <li>Adatgyűjtés és adatelemzés végzése a fejlesztési folyamatokhoz.</li>
+          <li>Kézjel-felismerő (kézjelelemző) modell fejlesztése az összegyűjtött adatok alapján.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
