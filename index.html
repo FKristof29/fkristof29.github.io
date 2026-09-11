@@ -4,265 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Farkas Kristóf Péter – Portfólió</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#090a0c">
+<meta name="description" content="Farkas Kristóf Péter szoftverfejlesztő és webfejlesztő hallgató portfóliója. Projektek, AI-fejlesztések és szakmai tapasztalat.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
 
-  :root {
-    --ink: #0f1117;
-    --accent: #1a56db;
-    --muted: #6b7280;
-    --bg: #f8f7f4;
-    --card: #ffffff;
-    --border: #e5e2da;
-    --sidebar: #0f1117;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-  }
-
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15,17,23,0.95);
-    backdrop-filter: blur(12px);
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px; color: white; text-decoration: none;
-  }
-
-  .nav-logo em { font-style: italic; color: #1a56db; }
-
-  .nav-links { display: flex; gap: 28px; }
-
-  .nav-links a {
-    font-size: 13.5px; font-weight: 500;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none; transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: white; }
-
-  .hero {
-    background: var(--sidebar);
-    padding: 100px 40px 80px;
-    display: flex; flex-direction: column;
-    align-items: center; text-align: center; gap: 20px;
-    position: relative; overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(26,86,219,0.15) 0%, transparent 70%);
-    top: -100px; left: 50%; transform: translateX(-50%);
-    pointer-events: none;
-  }
-
-  .hero-avatar {
-    width: 110px; height: 110px; border-radius: 50%;
-    border: 3px solid var(--accent); padding: 4px;
-    box-shadow: 0 0 0 1px rgba(26,86,219,0.3), 0 20px 40px rgba(0,0,0,0.5);
-  }
-
-  .hero-avatar img {
-    width: 100%; height: 100%; border-radius: 50%;
-    object-fit: cover; object-position: center top; display: block;
-  }
-
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 52px; color: white;
-    line-height: 1.05; letter-spacing: -1px;
-  }
-
-  .hero h1 em { font-style: italic; color: var(--accent); }
-
-  .hero-sub {
-    font-size: 16px; color: rgba(255,255,255,0.55);
-    max-width: 500px; line-height: 1.6;
-  }
-
-  .hero-badges {
-    display: flex; gap: 10px; flex-wrap: wrap;
-    justify-content: center; margin-top: 6px;
-  }
-
-  .hero-badge {
-    font-size: 12px; font-weight: 600;
-    background: rgba(26,86,219,0.2);
-    border: 1px solid rgba(26,86,219,0.35);
-    color: rgba(255,255,255,0.85);
-    border-radius: 20px; padding: 5px 14px; letter-spacing: 0.04em;
-  }
-
-  .hero-cta { display: flex; gap: 12px; margin-top: 10px; }
-
-  .btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 11px 22px; border-radius: 10px;
-    font-size: 14px; font-weight: 600;
-    text-decoration: none; transition: all 0.2s;
-  }
-
-  .btn-primary { background: var(--accent); color: white; }
-  .btn-primary:hover { background: #1447c0; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,86,219,0.35); }
-
-  .btn-secondary { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.12); }
-  .btn-secondary:hover { background: rgba(255,255,255,0.13); }
-
-  .btn svg { width: 15px; height: 15px; }
-
-  .btn-sm { padding: 7px 16px; font-size: 13px; background: var(--accent); color: white; border-radius: 8px; }
-  .btn-sm:hover { background: #1447c0; transform: translateY(-1px); }
-
-  .container { max-width: 960px; margin: 0 auto; padding: 80px 40px; }
-
-  .section-header {
-    display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
-  }
-
-  .section-header h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 32px; color: var(--ink); white-space: nowrap;
-  }
-
-  .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .project-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex; flex-direction: column;
-  }
-
-  .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(15,17,23,0.12); }
-
-  .project-header {
-    padding: 24px 24px 16px; border-bottom: 1px solid var(--border);
-    background: linear-gradient(135deg, #f8f7f4, #fff);
-    display: flex; align-items: center; gap: 14px;
-  }
-
-  .project-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
-  }
-
-  .project-title { font-size: 15px; font-weight: 700; color: var(--ink); }
-  .project-type { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-  .project-body { padding: 18px 24px 20px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
-  .project-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; flex: 1; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .tag {
-    font-size: 11.5px; font-weight: 600;
-    background: rgba(26,86,219,0.08); color: var(--accent);
-    border-radius: 5px; padding: 3px 9px;
-  }
-
-  .project-footer { padding: 0 24px 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-
-  .contrib-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-  }
-
-  .contrib-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 14px 16px;
-    display: flex; align-items: flex-start; gap: 12px;
-  }
-
-  .contrib-icon { font-size: 18px; margin-top: 2px; }
-  .contrib-title { font-size: 13px; font-weight: 600; color: var(--ink); }
-  .contrib-type { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .contrib-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-
-  .contrib-link {
-    display: inline-flex; align-items: center;
-    font-size: 12px; font-weight: 600; color: var(--accent);
-    text-decoration: none; margin-top: 6px; transition: opacity 0.2s;
-  }
-  .contrib-link:hover { opacity: 0.7; }
-
-  .exp-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px 30px;
-    display: flex; gap: 20px; align-items: flex-start;
-  }
-
-  .exp-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: rgba(26,86,219,0.08); color: var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
-  }
-
-  .exp-role { font-size: 17px; font-weight: 700; color: var(--ink); }
-  .exp-meta { font-size: 12.5px; color: var(--accent); font-weight: 600; margin-top: 3px; }
-  .exp-org { font-size: 13px; color: var(--muted); margin-top: 1px; margin-bottom: 12px; }
-
-  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  .exp-list li {
-    font-size: 13.5px; color: var(--muted); line-height: 1.55;
-    padding-left: 16px; position: relative;
-  }
-  .exp-list li::before {
-    content: '—'; position: absolute; left: 0; color: var(--accent);
-  }
-
-  footer {
-    background: #080a0e; text-align: center; padding: 24px;
-    font-size: 12.5px; color: rgba(255,255,255,0.25);
-  }
-
-  @media (max-width: 700px) {
-    .hero h1 { font-size: 36px; }
-    nav { padding: 0 20px; }
-    .nav-links { gap: 16px; }
-    .container { padding: 60px 20px; }
-    .exp-card { flex-direction: column; }
-  }
-</style>
 </head>
 <body>
+<a class="skip-link" href="#projects">Ugrás a projektekhez</a>
+<div class="scene-backdrop" aria-hidden="true"><div class="fallback-orb"></div></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-<nav>
-  <a class="nav-logo" href="#">Farkas <em>Kristóf </em> P.</a>
+<nav aria-label="Fő navigáció">
+  <a class="nav-logo" href="#home" aria-label="Farkas Kristóf Péter — kezdőlap">fk<span>®</span></a>
   <div class="nav-links">
-    <a href="#projects">Projektek</a>
-    <a href="#experience">Tapasztalat</a>
-    <a href="#contrib">Közreműködések</a>
+    <a href="#projects">Projektek <span>01</span></a>
+    <a href="#experience">Tapasztalat <span>02</span></a>
+    <a href="#contrib">Közreműködések <span>03</span></a>
   </div>
+  <button class="effects-toggle" type="button" aria-pressed="false"><span class="status-dot"></span>Effektek <span class="effects-state">KI</span></button>
 </nav>
+<main>
 
-<section class="hero">
-  <div class="hero-avatar">
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero-eyebrow"><span class="status-dot"></span> SZEGED, HU <span class="eyebrow-separator">/</span> PORTFÓLIÓ — 2026</div>
+  <div class="hero-art-label" aria-hidden="true"><span>FK—01</span><span>DIGITÁLIS KÍSÉRLET</span></div>
+
+  <h1 id="hero-title"><span>FARKAS</span><span class="name-second">KRISTÓF<span class="name-dot">.</span></span><span class="name-third">PÉTER</span></h1>
+  <div class="hero-intro"><div class="hero-avatar">
     <img src="avatar.jpg" alt="Farkas Kristóf Péter" onerror="this.style.display='none'">
   </div>
-  <h1>Farkas <em>Kristóf</em> Péter</h1>
-  <p class="hero-sub">Szoftverfejlesztő és webfejlesztő hallgató Szegeden.</p>
+  <p class="hero-sub">Szoftverfejlesztő és webfejlesztő hallgató Szegeden.</p></div>
   <div class="hero-badges">
     <span class="hero-badge">Szoftverfejlesztő</span>
     <span class="hero-badge">Webfejlesztő</span>
@@ -272,23 +50,24 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       Projektek
     </a>
-    <a class="btn btn-secondary" href="https://github.com/FKristof29" target="_blank">
+    <a class="btn btn-secondary" href="https://github.com/FKristof29" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
       GitHub
     </a>
   </div>
+  <div class="hero-bottom"><a href="#projects" class="scroll-hint"><span>↓</span> GÖRGESS ÉS FEDEZD FEL</a><span class="hero-index">KÓD. KÍSÉRLET. ALKOTÁS.</span></div>
 </section>
 
-<section id="projects">
+<section id="projects" aria-labelledby="projects-title">
   <div class="container">
-    <div class="section-header"><h2>Projektek</h2></div>
+    <div class="section-header"><div><span class="section-kicker">01 / VÁLOGATOTT MUNKÁK</span><h2 id="projects-title">Ötletből<span class="outline-text"> valóság.</span></h2></div><span class="section-count">10 PROJEKT ↘</span></div>
     <div class="projects-grid">
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:0" aria-labelledby="project-1"><span class="project-number" aria-hidden="true">01 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#eef2ff;">🤖</div>
           <div>
-            <div class="project-title">AIDA</div>
+            <h3 class="project-title" id="project-1">AIDA</h3>
             <div class="project-type">AI Desktop Asszisztens</div>
           </div>
         </div>
@@ -301,13 +80,13 @@
           </div>
         </div>
 
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:1" aria-labelledby="project-2"><span class="project-number" aria-hidden="true">02 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#1a1a2e; color: goldenrod;">⚔️</div>
           <div>
-            <div class="project-title">mm</div>
+            <h3 class="project-title" id="project-2">mm</h3>
             <div class="project-type">Multimédia beadandó</div>
           </div>
         </div>
@@ -320,15 +99,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/mm_beadando" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/mm_beadando" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:2" aria-labelledby="project-3"><span class="project-number" aria-hidden="true">03 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#fef2f2;">🅰️</div>
           <div>
-            <div class="project-title">Angular Beadandó</div>
+            <h3 class="project-title" id="project-3">Angular Beadandó</h3>
             <div class="project-type">Webalkalmazás</div>
           </div>
         </div>
@@ -341,15 +120,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/webfejlesztesi-keretrendszerek-2026/projektmunka-FKristof29" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/webfejlesztesi-keretrendszerek-2026/projektmunka-FKristof29" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:3" aria-labelledby="project-4"><span class="project-number" aria-hidden="true">04 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#f0fdf4;">🌐</div>
           <div>
-            <div class="project-title">MYHTML</div>
+            <h3 class="project-title" id="project-4">MYHTML</h3>
             <div class="project-type">Webfejlesztési beadandó</div>
           </div>
         </div>
@@ -361,15 +140,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/MYHTML" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/MYHTML" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:4" aria-labelledby="project-5"><span class="project-number" aria-hidden="true">05 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#fef3c7;">📚</div>
           <div>
-            <div class="project-title">Library Manager</div>
+            <h3 class="project-title" id="project-5">Library Manager</h3>
             <div class="project-type">Konzolos alkalmazás</div>
           </div>
         </div>
@@ -381,15 +160,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/library_managment" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/library_managment" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:5" aria-labelledby="project-6"><span class="project-number" aria-hidden="true">06 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#f0fdf4;">✅</div>
           <div>
-            <div class="project-title">Todo App</div>
+            <h3 class="project-title" id="project-6">Todo App</h3>
             <div class="project-type">Webalkalmazás</div>
           </div>
         </div>
@@ -402,15 +181,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/todo_app" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/todo_app" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:6" aria-labelledby="project-7"><span class="project-number" aria-hidden="true">07 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#eff6ff;">🎮</div>
           <div>
-            <div class="project-title">Sudoku</div>
+            <h3 class="project-title" id="project-7">Sudoku</h3>
             <div class="project-type">Asztali alkalmazás</div>
           </div>
         </div>
@@ -423,15 +202,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/sudoku" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/sudoku" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:7" aria-labelledby="project-8"><span class="project-number" aria-hidden="true">08 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#f5f3ff;">⚡</div>
           <div>
-            <div class="project-title">LearnApp</div>
+            <h3 class="project-title" id="project-8">LearnApp</h3>
             <div class="project-type">Webalkalmazás</div>
           </div>
         </div>
@@ -444,15 +223,15 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/FKristof29/quiz_app" target="_blank" class="btn btn-sm">GitHub →</a>
+          <a href="https://github.com/FKristof29/quiz_app" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:8" aria-labelledby="project-9"><span class="project-number" aria-hidden="true">09 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#fff7ed;">🤟</div>
           <div>
-            <div class="project-title">Kézjel-felismerő</div>
+            <h3 class="project-title" id="project-9">Kézjel-felismerő</h3>
             <div class="project-type">MediaPipe + AI modell</div>
           </div>
         </div>
@@ -465,17 +244,17 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://jelsmart.hu/demo/" target="_blank" class="btn btn-sm">Demo →</a>
-          <a href="https://jelsmart.hu/dactyl" target="_blank" class="btn btn-sm">Dactyl →</a>
-          <a href="https://muhely.ovikodex.hu/panel" target="_blank" class="btn btn-sm">Panel →</a>
+          <a href="https://jelsmart.hu/demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Demo →</a>
+          <a href="https://jelsmart.hu/dactyl" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Dactyl →</a>
+          <a href="https://muhely.ovikodex.hu/panel" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Panel →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card" style="--card-index:9" aria-labelledby="project-10"><span class="project-number" aria-hidden="true">10 /</span>
         <div class="project-header">
           <div class="project-icon" style="background:#ecfeff;">💬</div>
           <div>
-            <div class="project-title">Chatbot & Quiz Generátor</div>
+            <h3 class="project-title" id="project-10">Chatbot & Quiz Generátor</h3>
             <div class="project-type">AI webalkalmazás</div>
           </div>
         </div>
@@ -488,17 +267,17 @@
           </div>
         </div>
         <div class="project-footer">
-          <a href="https://digikodex.hu/quiz-generator" target="_blank" class="btn btn-sm">Megnyitás →</a>
+          <a href="https://digikodex.hu/quiz-generator" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Megnyitás →</a>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
-<section id="experience" style="background: white;">
-  <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
-    <div class="section-header"><h2 style="font-size: 22px;">Tapasztalat</h2></div>
+<section id="experience" aria-labelledby="experience-title">
+  <div class="container">
+    <div class="section-header"><div><span class="section-kicker">02 / TAPASZTALAT</span><h2 id="experience-title">Élesben<span class="outline-text"> tanulni.</span></h2></div></div>
     <div class="exp-card">
       <div class="exp-icon">💼</div>
       <div>
@@ -515,9 +294,9 @@
   </div>
 </section>
 
-<section id="contrib" style="background: white;">
-  <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
-    <div class="section-header"><h2 style="font-size: 22px;">Közreműködések</h2></div>
+<section id="contrib" aria-labelledby="contrib-title">
+  <div class="container">
+    <div class="section-header"><div><span class="section-kicker">03 / KÖZREMŰKÖDÉSEK</span><h2 id="contrib-title">Együtt<span class="outline-text"> tovább.</span></h2></div><span class="section-count">KÖZÖS ALKOTÁS ↗</span></div>
     <div class="contrib-grid">
 
       <div class="contrib-card">
@@ -529,7 +308,7 @@
             <span class="tag">Python</span>
             <span class="tag">AI</span>
           </div>
-          <a href="https://github.com/cride9/AISlop" target="_blank" class="contrib-link">GitHub →</a>
+          <a href="https://github.com/cride9/AISlop" target="_blank" rel="noopener noreferrer" class="contrib-link">GitHub →</a>
         </div>
       </div>
 
@@ -542,7 +321,7 @@
             <span class="tag">Python</span>
             <span class="tag">AI</span>
           </div>
-          <a href="https://github.com/cride9/dnd-ai" target="_blank" class="contrib-link">GitHub →</a>
+          <a href="https://github.com/cride9/dnd-ai" target="_blank" rel="noopener noreferrer" class="contrib-link">GitHub →</a>
         </div>
       </div>
 
@@ -555,7 +334,7 @@
             <span class="tag">Python</span>
             <span class="tag">Agent</span>
           </div>
-          <a href="https://github.com/cride9/Basic-Agent" target="_blank" class="contrib-link">GitHub →</a>
+          <a href="https://github.com/cride9/Basic-Agent" target="_blank" rel="noopener noreferrer" class="contrib-link">GitHub →</a>
         </div>
       </div>
 
@@ -563,9 +342,10 @@
   </div>
 </section>
 
-<footer>
+</main>
+<footer><a class="footer-mark" href="#home" aria-label="Vissza az oldal tetejére">fk<span>↗</span></a><span>
   © 2026 Farkas Kristóf Péter · Szoftverfejlesztő & Webfejlesztő
-</footer>
+</span><a class="back-top" href="#home">VISSZA AZ ELEJÉRE ↑</a></footer>
 
 </body>
 </html>
