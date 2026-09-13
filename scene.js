@@ -56,9 +56,26 @@ export function createScene(canvas, onFailure) {
       transformed += normal * ripple;
     `);
   };
-  const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.28, .49, mobile.matches ? 150 : 240, mobile.matches ? 24 : 40, 2, 3), metal);
-  knot.rotation.set(.35, -.35, -.35);
-  sculpture.add(knot);
+  // A stack of offset blocks reads as layered backend architecture — a foundation
+  // (data layer), a core service layer, and smaller modules built on top and
+  // offset like they're being assembled — instead of an abstract decorative knot.
+  const structure = new THREE.Group();
+  const blockSpecs = [
+    { size: [1.55, .22, 1.55], pos: [0, -.95, 0], rotY: .10 },   // foundation / data layer
+    { size: [1.15, .55, 1.15], pos: [.05, -.42, 0], rotY: -.08 }, // core service layer
+    { size: [.82, .5, .82], pos: [.62, .27, -.08], rotY: .42 },  // API / interface layer
+    { size: [.58, .4, .58], pos: [-.55, .55, .3], rotY: -.55 }   // top module, still settling into place
+  ];
+  blockSpecs.forEach(({ size, pos, rotY }) => {
+    const block = new THREE.Mesh(new THREE.BoxGeometry(size[0], size[1], size[2], 2, 2, 2), metal);
+    block.position.set(pos[0], pos[1], pos[2]);
+    block.rotation.y = rotY;
+    structure.add(block);
+    const edges = new THREE.LineSegments(new THREE.EdgesGeometry(block.geometry), new THREE.LineBasicMaterial({ color: 0xd6ff64, transparent: true, opacity: .35 }));
+    block.add(edges);
+  });
+  structure.rotation.set(.35, -.35, -.35);
+  sculpture.add(structure);
   sculpture.position.set(2.15, .1, 0);
 
   const orbit = new THREE.Group();
@@ -66,7 +83,8 @@ export function createScene(canvas, onFailure) {
   const orbitMaterial = new THREE.MeshBasicMaterial({ color:0xd6ff64, transparent:true, opacity:.23 });
   const ring = new THREE.Mesh(new THREE.TorusGeometry(2.35, .006, 5, 150), orbitMaterial);
   ring.rotation.set(1.12, -.35, .2); orbit.add(ring);
-  const satellite = new THREE.Mesh(new THREE.SphereGeometry(.095, 16, 12), new THREE.MeshStandardMaterial({color:0xccff39,emissive:0xccff39,emissiveIntensity:.45,metalness:.7,roughness:.3}));
+  // A small cube on the orbit path reads as a module/package being deployed onto the stack.
+  const satellite = new THREE.Mesh(new THREE.BoxGeometry(.15, .15, .15), new THREE.MeshStandardMaterial({color:0xccff39,emissive:0xccff39,emissiveIntensity:.45,metalness:.7,roughness:.3}));
   orbit.add(satellite);
 
   const arc = new THREE.Mesh(new THREE.TorusGeometry(4.8, .012, 5, 160, Math.PI * 1.6), new THREE.MeshBasicMaterial({color:0xf34aff,transparent:true,opacity:.19}));
@@ -114,11 +132,14 @@ export function createScene(canvas, onFailure) {
   const resizeObserver = new ResizeObserver(measure);
   resizeObserver.observe(document.querySelector('main'));
 
+  // Small, monotonic drift between keyframes so scroll motion reads as one continuous
+  // camera move rather than a disjointed flythrough. Rotation deltas stay well under
+  // half a turn so the knot never appears to tumble or snap between orientations.
   const frames = [
-    {x:2.15,y:.1,z:0,rx:.35,ry:-.35,rz:-.35,cx:0,cy:0,cz:9.6},
-    {x:2.5,y:.3,z:-1.5,rx:1.2,ry:.6,rz:.25,cx:.4,cy:.2,cz:10.4},
-    {x:3.0,y:.4,z:-.8,rx:2.4,ry:1.3,rz:-.7,cx:-.4,cy:.4,cz:9.8},
-    {x:0,y:1.5,z:-3,rx:3.0,ry:2.2,rz:.4,cx:.3,cy:0,cz:10.8}
+    {x:2.15,y:.10,z:0,   rx:.35,ry:-.35,rz:-.35,cx:0,   cy:0,  cz:9.6},
+    {x:2.35,y:.20,z:-.45,rx:.55,ry:-.15,rz:-.22,cx:.15, cy:.06,cz:9.8},
+    {x:2.55,y:.30,z:-.85,rx:.72,ry:.05, rz:-.08,cx:-.10,cy:.12,cz:10.0},
+    {x:2.35,y:.42,z:-1.2,rx:.85,ry:.22, rz:.08, cx:.10, cy:.04,cz:10.15}
   ];
   let active = false, animationId = 0, previous = 0, elapsed = 0, sampleTime = 0, sampleFrames = 0, warmup = 0;
   function render(now) {
@@ -138,7 +159,7 @@ export function createScene(canvas, onFailure) {
     const mobileX = mobile.matches ? -.8 : 0;
     sculpture.position.lerp(targetPosition.set(mix('x') + mobileX, mix('y') + (mobile.matches ? -.45 : 0) + Math.sin(elapsed*.5)*.05, mix('z')), smoothing);
     sculpture.scale.setScalar(mobile.matches ? .72 : 1);
-    knot.rotation.set(mix('rx') + elapsed * .055, mix('ry') + elapsed * .07 + smoothPointer.x*.15, mix('rz'));
+    structure.rotation.set(mix('rx') + elapsed * .055, mix('ry') + elapsed * .07 + smoothPointer.x*.15, mix('rz'));
     camera.position.lerp(targetCamera.set(mix('cx') + smoothPointer.x*.2, mix('cy') - smoothPointer.y*.15, mix('cz')), smoothing);
     camera.lookAt(0, 0, 0);
     orbit.rotation.z = elapsed * .07;
